@@ -31,7 +31,7 @@
                     <div class="form-group row">
                         <label for="dt-nasc-cliente" class="col-sm-4 col-form-label">Data de nascimento</label>
                         <div class="col-sm-8">
-                            <input name="dt_nasc_cliente" type="date" class="form-control" id="dt-nasc-cliente" placeholder="DD/MM/YYYY" value="{{ old('dt_nasc_cliente') ?? $cliente->dt_nasc_cliente->format('Y-m-d') }}" required>
+                            <input name="dt_nasc_cliente" type="date" class="form-control" id="dt-nasc-cliente" placeholder="DD/MM/YYYY" value="{{ old('dt_nasc_cliente') ?? explode('/',$cliente->dt_nasc_cliente)[2].'-'.explode('/',$cliente->dt_nasc_cliente)[1].'-'.explode('/',$cliente->dt_nasc_cliente)[0] }}" required>
                         </div>
                     </div>
 

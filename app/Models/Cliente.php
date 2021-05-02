@@ -12,4 +12,14 @@ class Cliente extends Model
     protected $primaryKey = 'id_cliente';
     protected $dates = ['dt_nasc_cliente'];
     protected $guarded = ['id'];
+
+    public function getDtNascClienteAttribute($value)
+    {
+        return now()->parse($value)->format('d/m/Y');
+    }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return now()->parse($value)->format('d/m/Y');
+    }
 }

@@ -10,7 +10,7 @@
             </div>
             <div class="col-12 col-sm-8 mt-3">
                 <ul class="list-group">
-                    <li class="list-group-item">Data de nascimento: <strong>{{$cliente->dt_nasc_cliente->format('d/m/Y')}}</strong></li>
+                    <li class="list-group-item">Data de nascimento: <strong>{{$cliente->dt_nasc_cliente}}</strong></li>
                     <li class="list-group-item">RG: <strong>{{$cliente->rg_cliente}}</strong></li>
                     <li class="list-group-item">CPF: <strong>{{$cliente->cpf_cliente}}</strong></li>
                     <li class="list-group-item">Celular: <strong>{{$cliente->telefone_cliente}}</strong></li>
@@ -18,7 +18,7 @@
             </div>
 
             <div class="col-12 col-sm-6 mt-5 border-top text-muted pt-2">
-                Cliente cadastrado em {{$cliente->created_at->format('d/m/Y H:i')}}
+                Cliente cadastrado em {{$cliente->created_at}}
             </div>
 
             <div class="col-12 col-sm-6 mt-5 border-top pt-2 text-right">

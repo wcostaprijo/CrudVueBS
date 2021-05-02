@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Bootstrap;
+namespace App\Http\Controllers\Api\Vue;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -21,17 +21,7 @@ class ClienteController extends Controller
             ->when($request->has('cliente'), function($query) use($request){
                 $query->where('nome_cliente','LIKE','%'.$request->cliente.'%');
             })->paginate(10);
-        return view('bootstrap.cliente.index', compact('clientes'));
-    }
-
-    /**
-     * Mostrar formulario para cadastro de clientes
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('bootstrap.cliente.create');
+        return response()->json($clientes, 200);
     }
 
     /**
@@ -43,7 +33,7 @@ class ClienteController extends Controller
     public function store(\App\Http\Requests\Bootstrap\Cliente\Create $request)
     {
         $cliente = Cliente::create($request->validated());
-        return redirect()->route('clientes.show', ['cliente' => $cliente]);
+        return response()->json(['success' => true, 'cliente' => $cliente]);
     }
 
     /**
@@ -54,18 +44,7 @@ class ClienteController extends Controller
      */
     public function show(Cliente $cliente)
     {
-        return view('bootstrap.cliente.show', compact('cliente'));
-    }
-
-    /**
-     * Mostrar o formulario de atualização do cliente.
-     *
-     * @param  \App\Models\Cliente $cliente
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Cliente $cliente)
-    {
-        return view('bootstrap.cliente.update', compact('cliente'));
+        return response()->json($cliente, 200);
     }
 
     /**
@@ -78,7 +57,7 @@ class ClienteController extends Controller
     public function update(\App\Http\Requests\Bootstrap\Cliente\Update $request, Cliente $cliente)
     {
         $cliente->update($request->validated());
-        return redirect()->route('clientes.show', ['cliente' => $cliente]);
+        return response()->json(['success' => true, 'cliente' => $cliente]);
     }
 
     /**
@@ -90,7 +69,7 @@ class ClienteController extends Controller
     public function destroy(Cliente $cliente)
     {
         $cliente->delete();
-        return back()->with('success','Cliente excluído com sucesso');
+        return response()->json(['success' => true]);
     }
 
     /**

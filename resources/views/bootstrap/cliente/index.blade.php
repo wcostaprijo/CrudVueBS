@@ -59,7 +59,7 @@
                         @forelse($clientes as $cliente)
                             <tr>
                                 <th scope="row">{{ucwords(mb_strtolower($cliente->nome_cliente))}}</th>
-                                <td>{{$cliente->dt_nasc_cliente->format('d/m/Y')}}</td>
+                                <td>{{$cliente->dt_nasc_cliente}}</td>
                                 <td>{{$cliente->rg_cliente}}</td>
                                 <td>{{$cliente->cpf_cliente}}</td>
                                 <td>{{$cliente->telefone_cliente}}</td>
